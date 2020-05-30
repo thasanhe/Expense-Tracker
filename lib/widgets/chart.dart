@@ -28,7 +28,7 @@ class Chart extends StatelessWidget {
       print ('day ${DateFormat.E().format(weekDay)}, amount  ${total}');
 
       return {'day' : DateFormat.E().format(weekDay).substring(0,1), 'amount': total};
-    });
+    }).reversed.toList();
   }
 
   @override
