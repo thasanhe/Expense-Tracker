@@ -65,6 +65,14 @@ class _MyHomePageState extends State<MyHomePage> {
     return _transactions.where((tx) => tx.date.isAfter(DateTime.now().subtract(Duration(days: 7)))).toList();
   }
 
+  void _deleteTransaction(Transaction transaction) {
+    print("Deleting ${transaction}");
+    setState(() {
+      _transactions.remove(transaction);
+
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body:  ListView(
           children: [
             Chart(_recentTransactions),
-            UserTransactions(_transactions)
+            UserTransactions(_transactions, _deleteTransaction)
           ],
         ),
       floatingActionButton: FloatingActionButton(
