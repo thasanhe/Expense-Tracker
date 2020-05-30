@@ -27,6 +27,7 @@ class ExpenseTracker extends StatelessWidget {
       fontFamily: "Quicksand",
       textTheme: ThemeData.light().textTheme.copyWith(
         headline6: TextStyle(fontFamily: "OpenSans", fontWeight: FontWeight.bold, fontSize: 18),
+        button: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
       ),
       appBarTheme: AppBarTheme(
         textTheme: ThemeData.light().textTheme.copyWith(
@@ -49,15 +50,15 @@ class _MyHomePageState extends State<MyHomePage> {
 
   final List<Transaction> _transactions = [];
 
-  void _addNewTransaction(String title, double amount) {
+  void _addNewTransaction(String title, double amount, DateTime date) {
     setState(() {
-      _transactions.add(createTransaction(title, amount));
+      _transactions.add(createTransaction(title, amount, date));
     });
     print("Add new transactions");
   }
 
-  Transaction createTransaction(String title, double amount) {
-    return Transaction(id: DateTime.now().toString(), title: title, amount: amount, date: DateTime.now());
+  Transaction createTransaction(String title, double amount, DateTime date) {
+    return Transaction(id: DateTime.now().toString(), title: title, amount: amount, date: date);
   }
 
   List<Transaction> get _recentTransactions {
